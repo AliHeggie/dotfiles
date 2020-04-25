@@ -1,8 +1,6 @@
-
 set nocompatible              " required
 filetype off                  " required
-" Set runtime path to include fzf plugin 
-set rtp+=~/.fzf
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -12,6 +10,19 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
+"*********************
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+Plugin 'christoomey/vim-tmux-navigator'
+"*********************
 
 "paste toggle to paste text 'as is'
 set pastetoggle=<F12>
@@ -59,17 +70,12 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 set encoding=utf-8
 
-set tabstop=4 |
-set softtabstop=4 |
-set shiftwidth=4 |
-set expandtab |
-
 "PEP8 indentation
-au BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.py, *.md
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -87,8 +93,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 "Bundle 'Valloric/YouCompleteMe'
-"
-""YouComplteMe settings
+"YouComplteMe settings
 "let g:ycm_autoclose_preview_window_after_completion=1
 "map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -109,7 +114,9 @@ Plugin 'kien/ctrlp.vim'
 
 set nu
 
-" Plugin 'tpope/vim-fugitive'
+
+
+Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'junegunn/goyo.vim'
 
@@ -130,24 +137,6 @@ set nocompatible
 if has("autocmd")
     filetype plugin indent on
 endif
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'christoomey/vim-tmux-navigator'
-
 "All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -169,3 +158,6 @@ vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR>
 map <C-d> :!cat ~/.vimbuffer \| clip.exe <CR>
 " paste from buffer
 map <C-g> :r ~/.vimbuffer<CR>
+" fzf plugin 
+set rtp+=~/.fzf
+
