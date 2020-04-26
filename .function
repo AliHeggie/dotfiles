@@ -31,9 +31,15 @@ nt () {
     grep -o -h  --exclude='*.html' '%[a-zA-Z][a-zA-Z]*' $notesdir/* 2>/dev/null | sort | uniq
 }
 
-dev-tmux() {
+py-dev() {
     tmux new-session -d 'vim'
     tmux split-window -h 'ipython'
+    tmux -2 attach-session -d
+}
+
+r-dev() {
+    tmux new-session -d 'vim'
+    tmux split-window -h 'R'
     tmux -2 attach-session -d
 }
 
