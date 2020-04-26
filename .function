@@ -1,20 +1,20 @@
 export NOTESEDITOR="vi"
 n() {
 	if [[ $* =~ .*\.md ]]
-	then $NOTESEDITOR /mnt/c/Users/heggal/Documents/Notes/"$*"
-	else $NOTESEDITOR /mnt/c/Users/heggal/Documents/Notes/"$*".md
+	then $NOTESEDITOR $notesdir/"$*"
+	else $NOTESEDITOR $notesdir/"$*".md
 	fi
 }
 
 #lists files in Notes containing a pattern in filename ignoring .html files
 nls() {
-        ls -c /mnt/c/Users/heggal/Documents/Notes/ -I *.html | grep "$*" -i
+        ls -c $notesdir -I *.html | grep "$*" -i
 }
 
 nrm() {
        	if [[ $* =~ .*\.md ]]
-	then rm /mnt/c/Users/heggal/Documents/Notes/"$*"
-	else rm /mnt/c/Users/heggal/Documents/Notes/"$*".md
+	then rm $notesdir/"$*"
+	else rm $notesdir/"$*".md
 	fi
 }
 
@@ -22,12 +22,15 @@ nrm() {
 #Search using grep. Exludes files containing %old tag. Excluding html files
 # Use \| and .* for OR and AND 
 ngr() {
-	grep  -l -i --exclude='*.html' -E "$*" /mnt/c/Users/heggal/Documents/Notes/*  2>/dev/null| xargs grep -IL \%old
+	grep  -l -i --exclude='*.html' -E "$*" $notesdir/*  2>/dev/null| xargs grep -IL \%old
 
 }
 
 #Find all unique % tags
 nt () {
-    grep -o -h  --exclude='*.html' '%[a-zA-Z][a-zA-Z]*' /mnt/c/Users/heggal/Documents/Notes/* 2>/dev/null | sort | uniq
+    grep -o -h  --exclude='*.html' '%[a-zA-Z][a-zA-Z]*' $notesdir/* 2>/dev/null | sort | uniq
 }
 
+nloc() {
+	echo $notesdir"wibble"
+}
