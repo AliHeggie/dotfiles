@@ -113,6 +113,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# local environment vars
+source ~/.localvars
+
 # fuzzyfinder
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -122,5 +125,9 @@ source ~/dotfiles/.alias
 # function definitions.
 source ~/dotfiles/.function
 
+# add cargo to path
+export PATH=$PATH:/home/alastair/.cargo/bin
 
+# hledger
+alias h='hledger -f=hledger.journal'
 
