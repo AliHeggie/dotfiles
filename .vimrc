@@ -141,6 +141,11 @@ endif
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" replace currently selected text with default register
+" without yanking it
+vnoremap p "_dp
+vnoremap P "_dP
+
 "Shortcut to run python code"
 nnoremap <buffer> <F9> :'<,'>w !python<cr>
 
