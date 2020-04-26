@@ -31,6 +31,9 @@ nt () {
     grep -o -h  --exclude='*.html' '%[a-zA-Z][a-zA-Z]*' $notesdir/* 2>/dev/null | sort | uniq
 }
 
-nloc() {
-	echo $notesdir"wibble"
+dev-tmux() {
+    tmux new-session -d 'vim'
+    tmux split-window -h 'ipython'
+    tmux -2 attach-session -d
 }
+
