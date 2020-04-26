@@ -73,9 +73,17 @@ nnoremap <space> za
 set clipboard=unnamed
 
 set encoding=utf-8
-
 "PEP8 indentation
-au BufNewFile,BufRead *.py, *.md
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+au BufNewFile,BufRead *.md
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -145,6 +153,7 @@ filetype plugin indent on    " required
 nnoremap <buffer> <F9> :'<,'>w !python<cr>
 
 let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": ":0.1"}
 
 map gn :bn<cr>
 map gp :bp<cr>

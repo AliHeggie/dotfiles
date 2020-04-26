@@ -31,3 +31,9 @@ nt () {
     grep -o -h  --exclude='*.html' '%[a-zA-Z][a-zA-Z]*' /mnt/c/Users/heggal/Documents/Notes/* 2>/dev/null | sort | uniq
 }
 
+dev-tmux() {
+    tmux new-session -d 'vim'
+    tmux split-window -h 'ipython'
+    tmux -2 attach-session -d
+}
+
