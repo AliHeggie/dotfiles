@@ -11,12 +11,7 @@ if [ -f ~/.gitconfig ];then
   mv ~/.gitconfig ~/.gitconfig.bak
 fi
 
-mv ~/.bashrc ~/.bashrc.bak
-mv ~/.tmux.conf ~/.tmux.conf.bak
-mv ~/.vimrc ~/.vimrc.bak
-mv ~/.gitconfig ~/.gitconfig.bak
-
-ln -sc "~/dotfiles/.bashrc" ~
-ln -sc "~/dotfiles/.tmux.conf" ~
-ln -sc "~/dotfiles/.vimrc" ~
-ln -sc "~/dotfiles/.gitconfig" ~
+ln -sv ~/dotfiles/.bashrc ~
+ln -sv ~/dotfiles/.tmux.conf ~
+ln -sv ~/dotfiles/.vimrc ~
+ln -sv ~/dotfiles/.gitconfig ~
